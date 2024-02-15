@@ -9,9 +9,10 @@ HebAugment is dedicated to advancing the field of Natural Language Processing (N
 The repository is organized as follows to facilitate easy navigation and comprehension:
 
 - **/data**: Datasets and preprocessing scripts.
-  - **/raw**: Original data sources.
-  - **/processed**: Preprocessed and augmented data.
-- **/docs**: Project documentation, including detailed methodology and findings.
+  - **test.csv**: test data.
+  - **train.csv**: train data.
+  - **/translated**: English data and translations.
+  - **/generated**: generated data.
 - **/models**: Contains both the baseline and augmented model files.
   - **/baseline**: The initial sentiment analysis models.
   - **/improved**: Models trained on the augmented datasets.
