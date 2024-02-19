@@ -2,7 +2,7 @@ import pandas as pd
 from transformers import pipeline, AutoTokenizer, AutoModelForSeq2SeqLM
 import torch
 import re
-
+from deep_translator import GoogleTranslator
 
 class Translator:
     def __init__(self, path, model_type="transformer"):
@@ -24,9 +24,8 @@ class Translator:
             self.tokenizer = AutoTokenizer.from_pretrained(model_name)
 
         elif self.model_type == "attention":
-            # Placeholder for Attention mechanism model
-            # self.translator = ...  # Initialize your Attention mechanism model here
-            pass
+            self.translator = GoogleTranslator(source='auto', target='en')
+
 
     def translate(self, text):
         if self.model_type == "transformer":
@@ -37,6 +36,9 @@ class Translator:
             inputs = self.tokenizer.encode(text, return_tensors="pt", padding=True, truncation=True).to(self.device)
             outputs = self.model.generate(inputs, max_length=512)
             return self.tokenizer.decode(outputs[0], skip_special_tokens=True)
+        elif self.model_type == "attention":
+            # Translate using deep-translator
+            return self.translator.translate(text)
         else:
             return "Model type not supported"
 
