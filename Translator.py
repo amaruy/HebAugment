@@ -3,12 +3,15 @@ from transformers import pipeline, AutoTokenizer, AutoModelForSeq2SeqLM
 import torch
 import re
 from deep_translator import GoogleTranslator
+import concurrent.futures
+from tqdm import tqdm
+
 
 class Translator:
     def __init__(self, path, model_type="transformer"):
         self.path = path
         self.df = pd.read_csv(path)
-        self.df = self.df.dropna()
+        self.df = self.df.dropna()[:10000]
         self.model_type = model_type
         # Check if MPS is available and set the device
         self.device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
@@ -24,8 +27,7 @@ class Translator:
             self.tokenizer = AutoTokenizer.from_pretrained(model_name)
 
         elif self.model_type == "attention":
-            self.translator = GoogleTranslator(source='auto', target='en')
-
+            self.translator = GoogleTranslator(source='en', target='iw')
 
     def translate(self, text):
         if self.model_type == "transformer":
@@ -48,26 +50,64 @@ def contains_english(text):
     return bool(re.search('[a-zA-Z]', text))
 
 
-if __name__ == "__main__":
-    # Set options to display long strings
-    pd.set_option('display.max_colwidth', None)
-    models = ["transformer", "seq2seq"]
-    models = ["seq2seq"]
-    for model in models:
-        translator = Translator('../train.csv', model_type=model)
-        print(len(translator.df))
-        # Create lists to store data
-        english_texts = []
-        hebrew_texts = []
-        sentiments = []
+def translate_row(row, translator):
+    index, data = row
+    english_text = data['text']
+    translated_text = translator.translate(english_text)
+    hebrew_text = translated_text
+    sentiment = data['sentiment']
+    return english_text, hebrew_text, sentiment
 
-        for index, row in translator.df.iterrows():
-            english_texts.append(row['text'])
-            translated_text = translator.translate(row['text'])
-            hebrew_texts.append(translated_text)
-            sentiments.append(row['sentiment'])
-            if index == 10000:
-                break
+
+if __name__ == "__main__":
+    # # Set options to display long strings
+    # pd.set_option('display.max_colwidth', None)
+    # models = ["transformer", "seq2seq"]
+    # models = ["seq2seq"]
+    # for model in models:
+    #     translator = Translator('../train.csv', model_type=model)
+    #     print(len(translator.df))
+    #     # Create lists to store data
+    #     english_texts = []
+    #     hebrew_texts = []
+    #     sentiments = []
+    #
+    #     for index, row in translator.df.iterrows():
+    #         english_texts.append(row['text'])
+    #         translated_text = translator.translate(row['text'])
+    #         hebrew_texts.append(translated_text)
+    #         sentiments.append(row['sentiment'])
+    #         if index == 10000:
+    #             break
+    #
+    #     # Count the number of sentences with English words
+    #     count = sum(contains_english(sentence) for sentence in hebrew_texts)
+    #
+    #     print(f"Number of sentences with English words: {count}")
+    #
+    #     # Create new DataFrame
+    #     new_df = pd.DataFrame({
+    #         'English Text': english_texts,
+    #         'Hebrew Text': hebrew_texts,
+    #         'Sentiment': sentiments
+    #     })
+
+    pd.set_option('display.max_colwidth', None)
+
+    models = ["transformer", "seq2seq"]
+    for model in reversed(models):
+        translator = Translator('../train.csv', model_type=model)
+        print(f"Model: {model}, Number of rows in DataFrame: {len(translator.df)}")
+
+        # Using ThreadPoolExecutor to parallelize the translation
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            tasks = ((row, translator) for row in translator.df.iterrows())
+            results = list(tqdm(executor.map(lambda args: translate_row(*args), tasks),
+                                total=len(translator.df)))
+        results_filtered = [result for result in results if result is not None]
+
+        # Unpack results
+        english_texts, hebrew_texts, sentiments = zip(*results_filtered)
 
         # Count the number of sentences with English words
         count = sum(contains_english(sentence) for sentence in hebrew_texts)
@@ -81,6 +121,9 @@ if __name__ == "__main__":
             'Sentiment': sentiments
         })
 
+        new_df.to_csv(
+            f'/Users/ormeiri/Desktop/Homework/research methods/translating/ResearchMethodsProject/HebAugment/data/translated/{model}_translated.csv',
+            index=False)
 
         # # Print each column's values
         # for column in new_df.columns:
