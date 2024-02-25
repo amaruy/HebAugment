@@ -11,7 +11,7 @@ class Translator:
     def __init__(self, path, model_type="transformer"):
         self.path = path
         self.df = pd.read_csv(path)
-        self.df = self.df.dropna()[:10000]
+        self.df = self.df.dropna()[:15000]
         self.model_type = model_type
         # Check if MPS is available and set the device
         self.device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
@@ -104,7 +104,8 @@ if __name__ == "__main__":
             tasks = ((row, translator) for row in translator.df.iterrows())
             results = list(tqdm(executor.map(lambda args: translate_row(*args), tasks),
                                 total=len(translator.df)))
-        results_filtered = [result for result in results if result is not None]
+        # results_filtered = [result for result in results if result is not None]
+        results_filtered = [result for result in results if result is not None and not contains_english(result[1])]
 
         # Unpack results
         english_texts, hebrew_texts, sentiments = zip(*results_filtered)
@@ -122,7 +123,7 @@ if __name__ == "__main__":
         })
 
         new_df.to_csv(
-            f'/Users/ormeiri/Desktop/Homework/research methods/translating/ResearchMethodsProject/HebAugment/data/translated/{model}_translated.csv',
+            f'/Users/ormeiri/Desktop/Homework/research methods/translating/ResearchMethodsProject/HebAugment/data/translated/{model}_translated_no_english.csv',
             index=False)
 
         # # Print each column's values
