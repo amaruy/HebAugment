@@ -33,7 +33,7 @@ Dont forget citations!
 - **Meiri**: Ensure all references are properly cited.
 
 ### Answers to Reviews
-- **Noam**: Document and prepare responses to review.
+- **Yonatan**: Document and prepare responses to review.
 
 ### Presentation
 - **Baras**: Outline, build, and allocate sections for the presentation.
