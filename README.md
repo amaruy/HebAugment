@@ -17,10 +17,11 @@ Below are the specific action items assigned to team members. *Deadlines and spe
 - **Meiri**: Rewrite the section about translating data and reference models used.
 
 ### Evaluation
-- **Noam**: Document results with generated data, translated data, and combination of both. Plot results and runtimes.
-- **Yonatan**: Write the results section and include a table of the different results.
 - **Amit**: Add data analysis for translated data.
 - **Meiri**: Add data analysis for translated data.
+- **Noam**: Document results with generated data, translated data, and combination of both. Plot results and runtimes.
+- **Meiri**: Write the results section and include a table of the different results.
+
 
 ### Conclusions and Future Work
 - **Yonatan**: Write the conclusions and future work section.
@@ -30,10 +31,11 @@ Below are the specific action items assigned to team members. *Deadlines and spe
 - **Meiri**: Ensure all references are properly cited.
 
 ### Answers to Reviews
-- **Noam**: Document and prepare responses to peer reviews.
+- **Noam**: Document and prepare responses to review.
 
 ### Presentation
 - **Baras**: Outline, build, and allocate sections for the presentation.
+- **Amit**: Make it pretty.
 - **All**: Practice the presentation.
 
 
