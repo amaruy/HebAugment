@@ -1,7 +1,7 @@
-# **TODO - Deadline 2/3/24!!** 
+# **TODO - Deadline 4/3/24!!** 
 ## Action Items & Responsibilities
 
-Below are the specific action items assigned to team members. *Deadlines and specifics should be managed accordingly!*
+Dont forget citations!
 
 ### Abstract
 - **Yonatan**: Write the abstract section.
@@ -9,8 +9,10 @@ Below are the specific action items assigned to team members. *Deadlines and spe
 ### Introduction
 - **Yonatan**: Write the introduction section.
 
-### Background
-- **Yonatan**: Write the background section.
+### Background and Related Work
+- ~**Yonatan**: reWrite the background section.~
+- ~**Yonatan**: reWrite the related work section.~
+
 
 ### Methodology
 - **Amit**: Rewrite the section about generating data with prompt examples and reference GPT.
