@@ -38,7 +38,11 @@ Dont forget citations!
 ### Presentation
 - **Baras**: Outline, build, and allocate sections for the presentation.
 - **Amit**: Make it pretty.
+- **Ido**: Create Diagram of proposed system
 - **All**: Practice the presentation.
+
+### Codebase
+- **Noam**: Cleanup codebase, write user guide
 
 
 # HebAugment: Enhancing Hebrew Sentiment Analysis through Data Augmentation
