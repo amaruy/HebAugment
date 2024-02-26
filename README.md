@@ -1,3 +1,42 @@
+# **TODO - Deadline 2/3/24!!** 
+## Action Items & Responsibilities
+
+Below are the specific action items assigned to team members. *Deadlines and specifics should be managed accordingly!*
+
+### Abstract
+- **Yonatan**: Write the abstract section.
+
+### Introduction
+- **Yonatan**: Write the introduction section.
+
+### Background
+- **Yonatan**: Write the background section.
+
+### Methodology
+- **Amit**: Rewrite the section about generating data with prompt examples and reference GPT.
+- **Meiri**: Rewrite the section about translating data and reference models used.
+
+### Evaluation
+- **Noam**: Document results with generated data, translated data, and combination of both. Plot results and runtimes.
+- **Yonatan**: Write the results section and include a table of the different results.
+- **Amit**: Add data analysis for translated data.
+- **Meiri**: Add data analysis for translated data.
+
+### Conclusions and Future Work
+- **Yonatan**: Write the conclusions and future work section.
+
+### Editing
+- **Amit**: Ensure the document is 9 pages and check for cohesion.
+- **Meiri**: Ensure all references are properly cited.
+
+### Answers to Reviews
+- **Noam**: Document and prepare responses to peer reviews.
+
+### Presentation
+- **Baras**: Outline, build, and allocate sections for the presentation.
+- **All**: Practice the presentation.
+
+
 # HebAugment: Enhancing Hebrew Sentiment Analysis through Data Augmentation
 
 ## Overview
