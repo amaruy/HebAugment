@@ -38,7 +38,7 @@ Dont forget citations!
 ### Presentation
 - **Baras**: Outline, build, and allocate sections for the presentation.
 - **Amit**: Make it pretty.
-- **Ido**: Create Diagram of proposed system
+- **Ido**:~ Create Diagram of proposed system~
 - **All**: Practice the presentation.
 
 ### Codebase
