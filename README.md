@@ -75,7 +75,7 @@ The repository is organized as follows to facilitate easy navigation and compreh
 
 For further details, ongoing updates, and collaborative contributions, please visit the following resources:
 
-- **[Overleaf Project](https://www.overleaf.com/project/65bf3c41f13843b78eed4664)**: Comprehensive documentation and research paper drafts.
+- **[Overleaf Project](https://www.overleaf.com/project/65dca86edeff0e2765e3fce4)**: Comprehensive documentation and research paper drafts.
 - **[Google Docs Workspace](https://docs.google.com/document/d/1DCoGTBqNclhy4I-kD9zNqRHxKJWtVFx1mvK6PzVACow/edit)**: Collaborative space for project planning and discussion.
 
 ## Abstract
