@@ -15,7 +15,7 @@ Dont forget citations!
 
 
 ### Methodology
-- **Amit**: Rewrite the section about generating data with prompt examples and reference GPT.
+- ~**Amit**: Rewrite the section about generating data with prompt examples and reference GPT.
 - **Meiri**: Rewrite the section about translating data and reference models used.
 
 ### Evaluation
